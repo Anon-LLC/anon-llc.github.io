@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TWP Goaltending - Coming Soon!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Impact&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Styles */
+        body {
+            background: linear-gradient(45deg, neon green, neon pink, electric blue);
+            color: white;
+            font-family: 'Impact', sans-serif;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 50px;
+            text-transform: uppercase;
+            color: #FFFF00;
+            animation: bounce 0.5s ease infinite, colorChange 1s alternate infinite;
+            margin-top: 20%;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        @keyframes colorChange {
+            0% { color: #FFFF00; }
+            50% { color: #FF00FF; }
+            100% { color: #00FFFF; }
+        }
+
+        .logo {
+            font-size: 30px;
+            animation: spin 5s linear infinite;
+            margin-top: 20px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .ticker {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: black;
+            color: white;
+            font-size: 30px;
+            white-space: nowrap;
+            padding: 10px;
+            animation: scroll-left 10s linear infinite;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .big-button {
+            background-color: hotpink;
+            border: 5px solid lime;
+            padding: 20px 50px;
+            font-size: 30px;
+            color: black;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 30px 0;
+            cursor: pointer;
+            animation: shake 0.5s infinite alternate;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(-10px); }
+        }
+
+        .floating-text {
+            position: absolute;
+            font-size: 40px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-text:nth-child(1) {
+            top: 10%;
+            left: 30%;
+        }
+
+        .floating-text:nth-child(2) {
+            top: 40%;
+            left: 70%;
+        }
+
+        .floating-text:nth-child(3) {
+            top: 70%;
+            left: 50%;
+        }
+
+        .button-container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Coming Soon!</h1>
+    <div class="logo">TWP Goaltending</div>
+    
+    <div class="ticker">🔥 Training for Pucks! Coming Soon! 🏒 Save the Puck! 🧤 Bigger Pads, Better Saves! 🔥</div>
+    
+    <button class="big-button">CLICK HERE!!!</button>
+
+    <div class="button-container">
+        <button class="big-button">More Info!</button>
+        <button class="big-button">TWP Goaltending Training Soon!</button>
+    </div>
+
+    <div class="floating-text">Goalies Rule! 🥅</div>
+    <div class="floating-text">Pucks Can't Escape!</div>
+    <div class="floating-text">Save The Day! ⚡</div>
+
+</body>
+</html>

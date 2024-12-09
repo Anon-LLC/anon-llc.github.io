@@ -4,60 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TWP Goaltending - Coming Soon!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Impact&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap" rel="stylesheet">
     <style>
-        /* CSS Styles */
+        /* BODY STYLE - White background */
         body {
-            background: linear-gradient(45deg, neon green, neon pink, electric blue);
-            color: white;
-            font-family: 'Impact', sans-serif;
+            background: white;
+            color: yellow;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
-            padding: 0;
             margin: 0;
+            padding: 0;
+            font-size: 30px;
             overflow: hidden;
         }
 
+        /* Random font size and color for the h1 */
         h1 {
-            font-size: 50px;
-            text-transform: uppercase;
-            color: #FFFF00;
-            animation: bounce 0.5s ease infinite, colorChange 1s alternate infinite;
-            margin-top: 20%;
+            font-size: 80px;
+            color: lime;
+            text-shadow: 5px 5px 10px red;
+            margin-top: 10%;
+            animation: bouncingText 1s infinite alternate;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
+        /* Some bouncing animation to make it look silly */
+        @keyframes bouncingText {
+            0% { transform: translateY(0); }
             50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
         }
 
-        @keyframes colorChange {
-            0% { color: #FFFF00; }
-            50% { color: #FF00FF; }
-            100% { color: #00FFFF; }
-        }
-
+        /* The Logo (kinda random placement and font size) */
         .logo {
-            font-size: 30px;
-            animation: spin 5s linear infinite;
-            margin-top: 20px;
+            font-size: 40px;
+            color: red;
+            font-family: 'Comic Sans MS';
+            text-transform: uppercase;
+            margin-top: 30px;
+            animation: wiggle 1s infinite alternate;
         }
 
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        /* Wiggling animation for the logo */
+        @keyframes wiggle {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
         }
 
+        /* Ticker with random animation */
         .ticker {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background: black;
+            background: blue;
             color: white;
-            font-size: 30px;
+            font-size: 40px;
             white-space: nowrap;
             padding: 10px;
-            animation: scroll-left 10s linear infinite;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            animation: scroll-left 15s linear infinite;
         }
 
         @keyframes scroll-left {
@@ -65,58 +69,85 @@
             100% { transform: translateX(-100%); }
         }
 
+        /* Big Buttons with weird colors and effects */
         .big-button {
-            background-color: hotpink;
-            border: 5px solid lime;
-            padding: 20px 50px;
-            font-size: 30px;
+            background-color: pink;
+            border: 10px dashed lime;
+            padding: 30px 60px;
+            font-size: 40px;
             color: black;
             text-transform: uppercase;
             font-weight: bold;
-            margin: 30px 0;
+            margin: 40px 0;
             cursor: pointer;
-            animation: shake 0.5s infinite alternate;
+            animation: buttonShake 0.5s infinite alternate;
+            border-radius: 20px;
         }
 
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(10px); }
-            100% { transform: translateX(-10px); }
+        @keyframes buttonShake {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
         }
 
+        /* Floating text all over the place */
         .floating-text {
             position: absolute;
-            font-size: 40px;
-            animation: float 3s ease-in-out infinite;
+            font-size: 50px;
+            color: blue;
+            animation: floatText 3s infinite ease-in-out;
+            z-index: -1;
         }
 
         .floating-text:nth-child(1) {
             top: 10%;
-            left: 30%;
+            left: 10%;
+            color: orange;
         }
 
         .floating-text:nth-child(2) {
-            top: 40%;
+            top: 60%;
             left: 70%;
+            color: green;
         }
 
         .floating-text:nth-child(3) {
-            top: 70%;
-            left: 50%;
+            top: 30%;
+            left: 40%;
+            color: purple;
         }
 
-        .button-container {
-            margin-top: 50px;
+        /* GIF style */
+        img {
+            width: 40%;
+            height: auto;
+            margin-top: 30px;
+            animation: scaleUp 1s ease-in-out infinite alternate;
+            border: 5px dashed yellow;
+            border-radius: 25px;
         }
+
+        @keyframes scaleUp {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
     </style>
 </head>
 <body>
 
-    <h1>Coming Soon!</h1>
-    <div class="logo">TWP Goaltending</div>
-    
-    <div class="ticker">🔥 Training for Pucks! Coming Soon! 🏒 Save the Puck! 🧤 Bigger Pads, Better Saves! 🔥</div>
-    
+    <!-- GIF at the top with some size change and chaotic animation -->
+    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2389a496-6a09-4d99-9160-829c835c2024/dfv9jaz-decd6a4b-75bb-439c-b8a8-3c059ea6b63a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIzODlhNDk2LTZhMDktNGQ5OS05MTYwLTgyOWM4MzVjMjAyNFwvZGZ2OWphei1kZWNkNmE0Yi03NWJiLTQzOWMtYjhhOC0zYzA1OWVhNmI2M2EuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.osyUycdXOiUvNpN2iBdtXX0VQ4OhsFCas0LeEhPxunQ" alt="Exciting GIF">
+
+    <!-- Main header, coming soon text -->
+    <h1>Coming Soone!!!</h1>
+    <div class="logo">TWP Goaltending!</div>
+
+    <!-- Ticker at the bottom -->
+    <div class="ticker">🔥 Get Ready for Some Epic Saves!! 🏒 Training is Coming! 🧤🔥</div>
+
+    <!-- Big Buttons -->
     <button class="big-button">CLICK HERE!!!</button>
 
     <div class="button-container">
@@ -124,9 +155,10 @@
         <button class="big-button">TWP Goaltending Training Soon!</button>
     </div>
 
-    <div class="floating-text">Goalies Rule! 🥅</div>
-    <div class="floating-text">Pucks Can't Escape!</div>
-    <div class="floating-text">Save The Day! ⚡</div>
+    <!-- Floating text everywhere -->
+    <div class="floating-text">Goalies Rule!</div>
+    <div class="floating-text">Save The Puck!</div>
+    <div class="floating-text">Training is Fun!</div>
 
 </body>
 </html>

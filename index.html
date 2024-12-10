@@ -39,7 +39,7 @@
             color: red;
             font-family: sans-serif;
             text-transform: uppercase;
-            margin-top: 30px; /* Default margin-top */
+            margin-top: 30px;
             animation: wiggle 1s infinite alternate;
         }
 
@@ -167,7 +167,7 @@
 
             /* Make the floating image bigger on mobile */
             .floating-img {
-                width: 25%; /* Make the image larger on mobile */
+                width: 15%; /* Make the image larger on mobile */
             }
         }
 
@@ -177,21 +177,9 @@
             width: 10%;
             animation: floatAround 10s infinite, barrelRoll 10s infinite;
             transition: all 0.5s ease-in-out;
-            z-index: 1; /* Ensure the image is on top */
         }
 
-        /* Rainbow streamer effect */
-        .floating-img::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: -200%; /* Start off-screen */
-            width: 300%;
-            height: 10px;
-            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-            animation: streamerEffect 10s infinite linear;
-        }
-
+        /* Animation for the floating image movement */
         @keyframes floatAround {
             0% { top: 20%; left: 20%; }
             25% { top: 60%; left: 40%; }
@@ -200,15 +188,11 @@
             100% { top: 20%; left: 20%; }
         }
 
+        /* Animation for the barrel roll effect */
         @keyframes barrelRoll {
             0% { transform: rotate(0deg); }
             50% { transform: rotate(360deg); }
             100% { transform: rotate(0deg); }
-        }
-
-        @keyframes streamerEffect {
-            0% { left: -200%; } /* Start off-screen */
-            100% { left: 100%; } /* Move across the screen */
         }
 
         /* Style for the "ALL HAIL XENU" text with rainbow blinking effect */
@@ -272,23 +256,44 @@
     <!-- "ALL HAIL XENU" text with rainbow blink effect -->
     <div class="xenu-text">ALL HAIL XENU</div>
 
-    <!-- Floating image element -->
-    <img src="https://i.ibb.co/RNknPG9/spermgod.png" class="floating-img" alt="Floating Image">
-
     <!-- GIF at the top with some size change and chaotic animation -->
     <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2389a496-6a09-4d99-9160-829c835c2024/dfv9jaz-decd6a4b-75bb-439c-b8a8-3c059ea6b63a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIzODlhNDk2LTZhMDktNGQ5OS05MTYwLTgyOWM4MzVjMjAyNFwvZGZ2OWphei1kZWNkNmE0Yi03NWJiLTQzOWMtYjhhOC0zYzA1OWVhNmI2M2EuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.osyUycdXOiUvNpN2iBdtXX0VQ4OhsFCas0LeEhPxunQ" alt="Exciting GIF">
 
-    <!-- Main header, coming soon text -->
-    <h1>Coming Soone!!!</h1>
+    <!-- Floating images dynamically added by JavaScript -->
+    <div id="floating-images-container"></div>
+
+    <h1>Coming Soon!!!</h1>
     <div class="logo">NEW NEW NEW NEW</div>
 
-    <!-- Ticker at the bottom -->
     <div class="ticker">🔥 Get Ready for Some Epic Saves!! 🏒 Training is Coming! 🧤🔥</div>
 
     <!-- Floating text everywhere -->
     <div class="floating-text">Goalies Rule!</div>
     <div class="floating-text">Hockey is Life</div>
     <div class="floating-text">Coming Soon!</div>
+
+    <script>
+        // This script dynamically generates 5 floating images on mobile devices
+
+        if (window.innerWidth <= 600) {  // Check if it's a mobile device
+            for (let i = 0; i < 5; i++) {
+                let img = document.createElement('img');
+                img.src = 'https://i.ibb.co/RNknPG9/spermgod.png';
+                img.classList.add('floating-img');  // Apply the same class for floating image
+                document.getElementById('floating-images-container').appendChild(img);
+
+                // Randomly position the images
+                let randomTop = Math.floor(Math.random() * 80) + 10;  // Random top position (10% to 90%)
+                let randomLeft = Math.floor(Math.random() * 80) + 10; // Random left position (10% to 90%)
+                img.style.top = `${randomTop}%`;
+                img.style.left = `${randomLeft}%`;
+
+                // Apply random animation delays to create different start times
+                let randomDelay = Math.random() * 5;  // Random delay between 0 and 5 seconds
+                img.style.animationDelay = `${randomDelay}s`;
+            }
+        }
+    </script>
 
 </body>
 </html>

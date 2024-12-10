@@ -193,6 +193,27 @@
             100% { transform: rotate(0deg); }
         }
 
+        /* Style for the "ALL HAIL XENU" text with rainbow blinking effect */
+        .xenu-text {
+            font-size: 60px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 50px; /* Add some spacing above the GIF */
+            text-shadow: 2px 2px 10px yellow;
+            animation: rainbowBlink 1.5s infinite; /* Blinking effect */
+        }
+
+        /* Keyframes for rainbow blinking effect */
+        @keyframes rainbowBlink {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
     </style>
 </head>
 <body>
@@ -226,6 +247,9 @@
             }
         })();
     </script>
+
+    <!-- "ALL HAIL XENU" text with rainbow blink effect -->
+    <div class="xenu-text">ALL HAIL XENU</div>
 
     <!-- Floating image element -->
     <img src="https://i.ibb.co/RNknPG9/spermgod.png" class="floating-img" alt="Floating Image">

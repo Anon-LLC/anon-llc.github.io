@@ -185,8 +185,8 @@
             content: "";
             position: absolute;
             top: 50%;
-            left: -100%; /* Start off-screen */
-            width: 200%;
+            left: -200%; /* Start off-screen */
+            width: 300%;
             height: 10px;
             background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
             animation: streamerEffect 10s infinite linear;
@@ -207,7 +207,7 @@
         }
 
         @keyframes streamerEffect {
-            0% { left: -100%; } /* Start off-screen */
+            0% { left: -200%; } /* Start off-screen */
             100% { left: 100%; } /* Move across the screen */
         }
 

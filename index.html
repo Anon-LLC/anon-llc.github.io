@@ -177,6 +177,7 @@
             width: 10%;
             animation: floatAround 10s infinite, barrelRoll 10s infinite;
             transition: all 0.5s ease-in-out;
+            z-index: 1; /* Ensure the image is on top */
         }
 
         /* Rainbow streamer effect */
@@ -184,7 +185,7 @@
             content: "";
             position: absolute;
             top: 50%;
-            left: 0;
+            left: -100%; /* Start off-screen */
             width: 200%;
             height: 10px;
             background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
@@ -206,8 +207,8 @@
         }
 
         @keyframes streamerEffect {
-            0% { left: 0; }
-            100% { left: 100%; }
+            0% { left: -100%; } /* Start off-screen */
+            100% { left: 100%; } /* Move across the screen */
         }
 
         /* Style for the "ALL HAIL XENU" text with rainbow blinking effect */

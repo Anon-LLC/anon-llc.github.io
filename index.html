@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCIENTOLOGY Goaltending - Coming Soon!</title>
+    <title>SCIENTOLOGY Goaltending - Coming Soone!</title>
     <style>
         /* BODY STYLE - White background */
         body {
@@ -262,7 +262,7 @@
     <!-- Floating images dynamically added by JavaScript -->
     <div id="floating-images-container"></div>
 
-    <h1>Coming Soon!!!</h1>
+    <h1>Coming Soone!!!</h1>
     <div class="logo">NEW NEW NEW NEW</div>
 
     <div class="ticker">🔥 Get Ready for Some Epic Saves!! 🏒 Training is Coming! 🧤🔥</div>
@@ -270,7 +270,7 @@
     <!-- Floating text everywhere -->
     <div class="floating-text">Goalies Rule!</div>
     <div class="floating-text">Hockey is Life</div>
-    <div class="floating-text">Coming Soon!</div>
+    <div class="floating-text">Coming Soone!</div>
 
     <script>
         // This script dynamically generates 5 floating images on mobile devices
@@ -292,6 +292,12 @@
                 let randomDelay = Math.random() * 5;  // Random delay between 0 and 5 seconds
                 img.style.animationDelay = `${randomDelay}s`;
             }
+        } else {
+            // Add a single floating image for desktop
+            let img = document.createElement('img');
+            img.src = 'https://i.ibb.co/RNknPG9/spermgod.png';
+            img.classList.add('floating-img');  // Apply the same class for floating image
+            document.getElementById('floating-images-container').appendChild(img);
         }
     </script>
 

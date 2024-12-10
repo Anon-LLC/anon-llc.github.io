@@ -121,7 +121,6 @@
         /* Styles for buttons on the side */
         .side-button {
             position: fixed;
-            top: 30%;
             width: 200px;
             padding: 20px;
             font-size: 20px;
@@ -139,11 +138,13 @@
         /* Left side button */
         .left-button {
             left: 10px;
+            top: 30%;
         }
 
         /* Right side button */
         .right-button {
             right: 10px;
+            top: 30%;
         }
 
         /* Hover effect to make buttons more interactive */
@@ -154,14 +155,16 @@
 
         /* Media query for mobile devices (width <= 600px) */
         @media (max-width: 600px) {
-            /* Move the buttons to the bottom of the screen on mobile */
+            /* Make the buttons stack vertically on mobile */
             .side-button {
-                top: auto; /* Remove top positioning */
-                bottom: 10px; /* Position at the bottom */
                 width: 80%; /* Make buttons take 80% of the screen width */
+                margin: 10px auto; /* Center them and add vertical margin */
                 font-size: 18px; /* Reduce font size */
                 padding: 15px; /* Reduce padding */
+                top: auto; /* Remove top positioning */
+                bottom: 10px; /* Position at the bottom */
             }
+
             .left-button, .right-button {
                 width: 80%; /* Ensure both buttons are the same width */
                 margin-bottom: 10px; /* Add spacing between buttons */

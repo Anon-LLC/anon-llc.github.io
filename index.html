@@ -166,6 +166,28 @@
             }
         }
 
+        /* Floating image styles */
+        .floating-img {
+            position: absolute;
+            width: 10%;
+            animation: floatAround 10s infinite, barrelRoll 10s infinite;
+            transition: all 0.5s ease-in-out;
+        }
+
+        @keyframes floatAround {
+            0% { top: 20%; left: 20%; }
+            25% { top: 60%; left: 40%; }
+            50% { top: 80%; left: 10%; }
+            75% { top: 40%; left: 70%; }
+            100% { top: 20%; left: 20%; }
+        }
+
+        @keyframes barrelRoll {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+
     </style>
 </head>
 <body>
@@ -199,6 +221,9 @@
             }
         })();
     </script>
+
+    <!-- Floating image element -->
+    <img src="https://i.ibb.co/RNknPG9/spermgod.png" class="floating-img" alt="Floating Image">
 
     <!-- GIF at the top with some size change and chaotic animation -->
     <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2389a496-6a09-4d99-9160-829c835c2024/dfv9jaz-decd6a4b-75bb-439c-b8a8-3c059ea6b63a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIzODlhNDk2LTZhMDktNGQ5OS05MTYwLTgyOWM4MzVjMjAyNFwvZGZ2OWphei1kZWNkNmE0Yi03NWJiLTQzOWMtYjhhOC0zYzA1OWVhNmI2M2EuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.osyUycdXOiUvNpN2iBdtXX0VQ4OhsFCas0LeEhPxunQ" alt="Exciting GIF">

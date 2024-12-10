@@ -120,7 +120,6 @@
 
         /* Styles for buttons on the side */
         .side-button {
-            position: fixed;
             width: 200px;
             padding: 20px;
             font-size: 20px;
@@ -133,18 +132,7 @@
             cursor: pointer;
             z-index: 10;
             transition: background-color 0.3s ease;
-        }
-
-        /* Left side button */
-        .left-button {
-            left: 10px;
-            top: 30%;
-        }
-
-        /* Right side button */
-        .right-button {
-            right: 10px;
-            top: 30%;
+            margin-bottom: 20px; /* Ensures space between stacked buttons */
         }
 
         /* Hover effect to make buttons more interactive */
@@ -155,19 +143,21 @@
 
         /* Media query for mobile devices (width <= 600px) */
         @media (max-width: 600px) {
-            /* Make the buttons stack vertically on mobile */
-            .side-button {
-                width: 80%; /* Make buttons take 80% of the screen width */
-                margin: 10px auto; /* Center them and add vertical margin */
-                font-size: 18px; /* Reduce font size */
-                padding: 15px; /* Reduce padding */
-                top: auto; /* Remove top positioning */
-                bottom: 10px; /* Position at the bottom */
+            /* Stack the buttons vertically */
+            .side-buttons-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: fixed;
+                bottom: 10px;
+                width: 100%;
             }
 
-            .left-button, .right-button {
-                width: 80%; /* Ensure both buttons are the same width */
-                margin-bottom: 10px; /* Add spacing between buttons */
+            /* Make buttons take full width on mobile and add spacing */
+            .side-button {
+                width: 90%; /* Make buttons take up most of the screen width */
+                font-size: 18px; /* Smaller text on mobile */
+                padding: 15px; /* Reduced padding */
             }
         }
 
@@ -220,10 +210,12 @@
     <div class="floating-text">Save The Puck!</div>
     <div class="floating-text">Training is Fun!</div>
 
-    <!-- Buttons positioned on the side (desktop) or bottom (mobile) -->
-    <button class="side-button left-button">CLICK HERE!!!</button>
-    <button class="side-button right-button">More Info!</button>
-    <button class="side-button left-button">TWP Goaltending Training Soon!</button>
+    <!-- Container for buttons -->
+    <div class="side-buttons-container">
+        <button class="side-button">CLICK HERE!!!</button>
+        <button class="side-button">More Info!</button>
+        <button class="side-button">TWP Goaltending Training Soon!</button>
+    </div>
 
 </body>
 </html>

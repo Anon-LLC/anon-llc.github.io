@@ -68,27 +68,6 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* Big Buttons with weird colors and effects */
-        .big-button {
-            background-color: pink;
-            border: 10px dashed lime;
-            padding: 30px 60px;
-            font-size: 40px;
-            color: black;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin: 40px 0;
-            cursor: pointer;
-            animation: buttonShake 0.5s infinite alternate;
-            border-radius: 20px;
-        }
-
-        @keyframes buttonShake {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(10deg); }
-            100% { transform: rotate(0deg); }
-        }
-
         /* Floating text all over the place */
         .floating-text {
             position: absolute;
@@ -139,6 +118,40 @@
             100% { transform: scale(1); }
         }
 
+        /* Styles for buttons on the side */
+        .side-button {
+            position: fixed;
+            top: 30%; /* Position from the top */
+            width: 200px;
+            padding: 20px;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 5px dashed yellow;
+            background-color: red;
+            color: black;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Left side button */
+        .left-button {
+            left: 10px;
+        }
+
+        /* Right side button */
+        .right-button {
+            right: 10px;
+        }
+
+        /* Hover effect to make buttons more interactive */
+        .side-button:hover {
+            background-color: lime;
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -183,18 +196,15 @@
     <!-- Ticker at the bottom -->
     <div class="ticker">🔥 Get Ready for Some Epic Saves!! 🏒 Training is Coming! 🧤🔥</div>
 
-    <!-- Big Buttons -->
-    <button class="big-button">CLICK HERE!!!</button>
-
-    <div class="button-container">
-        <button class="big-button">More Info!</button>
-        <button class="big-button">TWP Goaltending Training Soon!</button>
-    </div>
-
     <!-- Floating text everywhere -->
     <div class="floating-text">Goalies Rule!</div>
     <div class="floating-text">Save The Puck!</div>
     <div class="floating-text">Training is Fun!</div>
+
+    <!-- Buttons positioned on the sides of the page -->
+    <button class="side-button left-button">CLICK HERE!!!</button>
+    <button class="side-button right-button">More Info!</button>
+    <button class="side-button left-button">TWP Goaltending Training Soon!</button>
 
 </body>
 </html>

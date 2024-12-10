@@ -158,8 +158,13 @@
             .side-button {
                 top: auto; /* Remove top positioning */
                 bottom: 10px; /* Position at the bottom */
-                width: 100%; /* Make buttons take full width */
-                font-size: 25px; /* Increase font size for better readability */
+                width: 80%; /* Make buttons take 80% of the screen width */
+                font-size: 18px; /* Reduce font size */
+                padding: 15px; /* Reduce padding */
+            }
+            .left-button, .right-button {
+                width: 80%; /* Ensure both buttons are the same width */
+                margin-bottom: 10px; /* Add spacing between buttons */
             }
         }
 
@@ -212,7 +217,7 @@
     <div class="floating-text">Save The Puck!</div>
     <div class="floating-text">Training is Fun!</div>
 
-    <!-- Buttons positioned on the sides of the page -->
+    <!-- Buttons positioned on the side (desktop) or bottom (mobile) -->
     <button class="side-button left-button">CLICK HERE!!!</button>
     <button class="side-button right-button">More Info!</button>
     <button class="side-button left-button">TWP Goaltending Training Soon!</button>

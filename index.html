@@ -9,7 +9,7 @@
         body {
             background: white;
             color: yellow;
-            font-family: sans-serif; /* Removed the Comic Sans MS font */
+            font-family: sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
@@ -37,7 +37,7 @@
         .logo {
             font-size: 40px;
             color: red;
-            font-family: sans-serif; /* Changed to a basic system font */
+            font-family: sans-serif;
             text-transform: uppercase;
             margin-top: 30px;
             animation: wiggle 1s infinite alternate;
@@ -121,7 +121,7 @@
         /* Styles for buttons on the side */
         .side-button {
             position: fixed;
-            top: 30%; /* Position from the top */
+            top: 30%;
             width: 200px;
             padding: 20px;
             font-size: 20px;
@@ -150,6 +150,13 @@
         .side-button:hover {
             background-color: lime;
             color: white;
+        }
+
+        /* Media query for mobile devices (width <= 600px) */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 68px; /* Reduce the font size by 15% on mobile */
+            }
         }
 
     </style>

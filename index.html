@@ -195,29 +195,25 @@
             100% { transform: rotate(0deg); }
         }
 
-        /* Style for the "ALL HAIL XENU" text with rainbow blinking effect */
-        .xenu-text {
-            font-size: 40px; /* Smaller size for the text */
-            font-weight: bold;
-            text-transform: uppercase;
-            position: absolute;
-            bottom: 20px; /* Position it at the bottom of the floating image */
-            width: 100%;
-            text-align: center;
-            text-shadow: 2px 2px 10px yellow;
-            animation: rainbowBlink 1.5s infinite; /* Blinking effect */
+        /* Flashing image effect */
+        #flashing-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://i.ibb.co/dJXr7qyT/nigga.png');
+            background-size: cover;
+            background-position: center;
+            animation: flashImage 0.1s linear infinite;
+            z-index: 9999;
         }
 
-        /* Keyframes for rainbow blinking effect */
-        @keyframes rainbowBlink {
-            0% { color: red; }
-            14% { color: orange; }
-            28% { color: yellow; }
-            42% { color: green; }
-            57% { color: blue; }
-            71% { color: indigo; }
-            85% { color: violet; }
-            100% { color: red; }
+        /* Animation to make the image flash */
+        @keyframes flashImage {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
         }
     </style>
 </head>
@@ -251,13 +247,20 @@
                 catchHandler();  // Set up event listeners if autoplay is blocked
             }
         })();
+
+        // After 30 seconds, show flashing image
+        setTimeout(() => {
+            const flashingImage = document.createElement('div');
+            flashingImage.id = 'flashing-image';
+            document.body.appendChild(flashingImage);
+        }, 30000); // 30 seconds delay
     </script>
 
     <!-- "ALL HAIL XENU" text with rainbow blink effect -->
     <div class="xenu-text">#1 HOCKEY GOALIETENDING</div>
 
     <!-- GIF at the top with some size change and chaotic animation -->
-    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2389a496-6a09-4d99-9160-829c835c2024/dfv9jaz-decd6a4b-75bb-439c-b8a8-3c059ea6b63a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIzODlhNDk2LTZhMDktNGQ5OS05MTYwLTgyOWM4MzVjMjAyNFwvZGZ2OWphei1kZWNkNmE0Yi03NWJiLTQzOWMtYjhhOC0zYzA1OWVhNmI2M2EuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.osyUycdXOiUvNpN2iBdtXX0VQ4OhsFCas0LeEhPxunQ" alt="Exciting GIF">
+    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2389a496-6a09-4d99-9160-829c835c2024/dfv9jaz-decd6a4b-75bb-439c-b8a8-3c059ea6b63a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9jaiI6W1t7InBhdGgiOiJcL2ZcLzIzODlhNDk2LTZhMDktNGQ5OS05MTYwLTgyOWM4MzVjMjAyNFwvZGZ2OWphei1kZWNkNmE0Yi03NWJiLTQzOWMtYjhhOC0zYzA1OWVhNmI2M2EuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.osyUycdXOiUvNpN2iBdtXX0VQ4OhsFCas0LeEhPxunQ" alt="Exciting GIF">
 
     <!-- Floating images dynamically added by JavaScript -->
     <div id="floating-images-container"></div>

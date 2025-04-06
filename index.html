@@ -320,104 +320,120 @@ body {cursor: url(http://www.rw-designer.com/cursor-extern.php?id=206376);}
   </a>
 </div>
 
-<script>
-        (function() {
-            const sparkleChars = ['✦', '✧', '✯', '✬', '✫', '*'];
-            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-            let mouseX = 0;
-            let mouseY = 0;
-            let isMoving = false;
-            let movementTimeout = null;
-            let sparkleInterval = null;
+// Create a canvas element
+const canvas = document.createElement('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+document.body.appendChild(canvas);
 
-            function createSparkle() {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                
-                // random offset
-                const offsetX = (Math.random() - 0.5) * 20;
-                const offsetY = (Math.random() - 0.5) * 20;
-                
-                sparkle.style.left = (mouseX + offsetX) + 'px';
-                sparkle.style.top = (mouseY + offsetY) + 'px';
-                sparkle.style.color = colors[Math.floor(Math.random() * colors.length)];
-                sparkle.textContent = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
-                
-                document.body.appendChild(sparkle);
-                
-                setTimeout(() => {
-                    sparkle.remove();
-                }, 800);
-            }
+// Get the 2D drawing context
+const ctx = canvas.getContext('2d');
 
-            function updateMousePosition(e) {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                
-                if (!isMoving) {
-                    isMoving = true;
-                    sparkleInterval = setInterval(createSparkle, 50);
-                }
-                
-                // Clear any existing timeout
-                if (movementTimeout) {
-                    clearTimeout(movementTimeout);
-                }
-                
-                // Set new timeout
-                movementTimeout = setTimeout(() => {
-                    isMoving = false;
-                    if (sparkleInterval) {
-                        clearInterval(sparkleInterval);
-                        sparkleInterval = null;
-                    }
-                }, 100);
-            }
+// Define particle and streamer objects
+class Particle {
+    constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.size = Math.random() * 2 + 1;
+        this.velocityX = Math.random() * 2 - 1;
+        this.velocityY = Math.random() * 2 - 1;
+    }
 
-            function stopSparkles() {
-                isMoving = false;
-                if (sparkleInterval) {
-                    clearInterval(sparkleInterval);
-                    sparkleInterval = null;
-                }
-                if (movementTimeout) {
-                    clearTimeout(movementTimeout);
-                    movementTimeout = null;
-                }
-            }
+    update() {
+        this.x += this.velocityX;
+        this.y += this.velocityY;
+        this.size -= 0.05;
 
-            document.addEventListener('mousemove', updateMousePosition);
-            document.addEventListener('mouseleave', stopSparkles);
+        if (this.size < 0) {
+            this.size = 0;
+        }
+    }
 
-            window.addEventListener('beforeunload', () => {
-                document.removeEventListener('mousemove', updateMousePosition);
-                document.removeEventListener('mouseleave', stopSparkles);
-                stopSparkles();
-            });
-        })();
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+}
 
-        (function () {
-            const hoaAudio = document.getElementById('hoa-audio');
-            hoaAudio.volume = 0.5;
+class Streamer {
+    constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.width = Math.random() * 2 + 1;
+        this.height = Math.random() * 10 + 5;
+        this.velocityX = Math.random() * 2 - 1;
+        this.velocityY = Math.random() * 2 - 1;
+    }
 
-            function catchHandler() {
-                let inputListener;
-                inputListener = function () {
-                    hoaAudio.play();
-                    document.removeEventListener('mousedown', inputListener);
-                    document.removeEventListener('keydown', inputListener);
-                };
+    update() {
+        this.x += this.velocityX;
+        this.y += this.velocityY;
+        this.width -= 0.01;
+        this.height -= 0.1;
 
-                document.addEventListener('mousedown', inputListener);
-                document.addEventListener('keydown', inputListener);
-            }
+        if (this.width < 0) {
+            this.width = 0;
+        }
+        if (this.height < 0) {
+            this.height = 0;
+        }
+    }
 
-            if (hoaAudio.readyState > 1) {
-                hoaAudio.play().catch(catchHandler);
-            } else {
-                hoaAudio.addEventListener('canplay', function () {
-                    hoaAudio.play().catch(catchHandler);
-                });
-            }
-        })();
-    </script>
+    draw() {
+        ctx.beginPath();
+        ctx.rect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+}
+
+// Initialize particles and streamers arrays
+let particles = [];
+let streamers = [];
+
+// Add event listener for mouse movement
+canvas.addEventListener('mousemove', (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+    const colors = ['#FF69B4', '#33CC33', '#6666FF', '#CC3333', '#CCCC33'];
+
+    for (let i = 0; i < 10; i++) {
+        particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)]));
+    }
+
+    if (Math.random() < 0.5) {
+        streamers.push(new Streamer(x, y, colors[Math.floor(Math.random() * colors.length)]));
+    }
+});
+
+// Animate the particles and streamers
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw();
+
+        if (particles[i].size === 0) {
+            particles.splice(i, 1);
+        }
+    }
+
+    for (let i = streamers.length - 1; i >= 0; i--) {
+        streamers[i].update();
+        streamers[i].draw();
+
+        if (streamers[i].width === 0 || streamers[i].height === 0) {
+            streamers.splice(i, 1);
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
+// Start the animation
+animate();

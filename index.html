@@ -320,120 +320,67 @@ body {cursor: url(http://www.rw-designer.com/cursor-extern.php?id=206376);}
   </a>
 </div>
 
-// Create a canvas element
-const canvas = document.createElement('canvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-document.body.appendChild(canvas);
+<canvas id="canvas"></canvas>
 
-// Get the 2D drawing context
-const ctx = canvas.getContext('2d');
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
 
-// Define particle and streamer objects
-class Particle {
-    constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.size = Math.random() * 2 + 1;
-        this.velocityX = Math.random() * 2 - 1;
-        this.velocityY = Math.random() * 2 - 1;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particles = [];
+
+  function Particle(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.size = Math.random() * 2 + 1;
+    this.velocityX = Math.random() * 2 - 1;
+    this.velocityY = Math.random() * 2 - 1;
+  }
+
+  Particle.prototype.update = function() {
+    this.x += this.velocityX;
+    this.y += this.velocityY;
+    this.size -= 0.05;
+
+    if (this.size < 0) {
+      this.size = 0;
     }
+  };
 
-    update() {
-        this.x += this.velocityX;
-        this.y += this.velocityY;
-        this.size -= 0.05;
+  Particle.prototype.draw = function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  };
 
-        if (this.size < 0) {
-            this.size = 0;
-        }
-    }
-
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-    }
-}
-
-class Streamer {
-    constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.width = Math.random() * 2 + 1;
-        this.height = Math.random() * 10 + 5;
-        this.velocityX = Math.random() * 2 - 1;
-        this.velocityY = Math.random() * 2 - 1;
-    }
-
-    update() {
-        this.x += this.velocityX;
-        this.y += this.velocityY;
-        this.width -= 0.01;
-        this.height -= 0.1;
-
-        if (this.width < 0) {
-            this.width = 0;
-        }
-        if (this.height < 0) {
-            this.height = 0;
-        }
-    }
-
-    draw() {
-        ctx.beginPath();
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-    }
-}
-
-// Initialize particles and streamers arrays
-let particles = [];
-let streamers = [];
-
-// Add event listener for mouse movement
-canvas.addEventListener('mousemove', (e) => {
+  document.addEventListener('mousemove', function(e) {
     const x = e.clientX;
     const y = e.clientY;
     const colors = ['#FF69B4', '#33CC33', '#6666FF', '#CC3333', '#CCCC33'];
 
     for (let i = 0; i < 10; i++) {
-        particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)]));
+      particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)]));
     }
+  });
 
-    if (Math.random() < 0.5) {
-        streamers.push(new Streamer(x, y, colors[Math.floor(Math.random() * colors.length)]));
-    }
-});
-
-// Animate the particles and streamers
-function animate() {
+  function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = particles.length - 1; i >= 0; i--) {
-        particles[i].update();
-        particles[i].draw();
+      particles[i].update();
+      particles[i].draw();
 
-        if (particles[i].size === 0) {
-            particles.splice(i, 1);
-        }
-    }
-
-    for (let i = streamers.length - 1; i >= 0; i--) {
-        streamers[i].update();
-        streamers[i].draw();
-
-        if (streamers[i].width === 0 || streamers[i].height === 0) {
-            streamers.splice(i, 1);
-        }
+      if (particles[i].size === 0) {
+        particles.splice(i, 1);
+      }
     }
 
     requestAnimationFrame(animate);
-}
+  }
 
-// Start the animation
-animate();
+  animate();
+</script>

@@ -300,6 +300,24 @@
             document.getElementById('floating-images-container').appendChild(img);
         }
     </script>
+    <script>
+  // Set the hover and click cursor images
+  const hoverCursor = 'https://i.ibb.co/FLhYN699/obama.png';
+  const clickCursor = 'https://i.ibb.co/93WsYbGg/obamaballs.png';
+
+  // When the user hovers over the body, change the cursor to hover image
+  document.body.style.cursor = `url(${hoverCursor}), auto`;
+
+  // When the user clicks, change the cursor to click image
+  document.body.addEventListener('mousedown', function() {
+    document.body.style.cursor = `url(${clickCursor}), auto`;
+  });
+
+  // Reset the cursor to default when the mouse button is released
+  document.body.addEventListener('mouseup', function() {
+    document.body.style.cursor = `url(${hoverCursor}), auto`;
+  });
+</script>
 
 </body>
 </html>
@@ -386,12 +404,4 @@ body {cursor: url(http://www.rw-designer.com/cursor-extern.php?id=206376);}
   animate();
 </script>
 
-/* When hovering over elements, change the cursor to the hover image */
-* {
-  cursor: url('https://i.ibb.co/FLhYN699/obama.png'), auto;
-}
 
-/* When clicking on elements, change the cursor to the click image */
-* :active {
-  cursor: url('https://i.ibb.co/93WsYbGg/obamaballs.png'), auto;
-}

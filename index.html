@@ -301,23 +301,26 @@
         }
     </script>
     <script>
-  // Set the hover and click cursor images
+  // Define the cursor images
   const hoverCursor = 'https://i.ibb.co/FLhYN699/obama.png';
   const clickCursor = 'https://i.ibb.co/93WsYbGg/obamaballs.png';
 
-  // When the user hovers over the body, change the cursor to hover image
-  document.body.style.cursor = `url(${hoverCursor}), auto`;
+  // Change cursor when hovering (mouseover)
+  document.body.addEventListener('mouseover', function() {
+    document.body.style.cursor = `url(${hoverCursor}), auto`;
+  });
 
-  // When the user clicks, change the cursor to click image
+  // Change cursor when clicking (mousedown)
   document.body.addEventListener('mousedown', function() {
     document.body.style.cursor = `url(${clickCursor}), auto`;
   });
 
-  // Reset the cursor to default when the mouse button is released
+  // Reset the cursor to default after the click (mouseup)
   document.body.addEventListener('mouseup', function() {
     document.body.style.cursor = `url(${hoverCursor}), auto`;
   });
 </script>
+
 
 </body>
 </html>

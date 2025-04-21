@@ -1,366 +1,408 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TWP GOALTENDING - COMING SOONE!</title>
-    <style>
-        body {
-            background: white;
-            color: yellow;
-            font-family: sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            font-size: 30px;
-            overflow: hidden;
-        }
-
-        h1 {
-            font-size: 80px;
-            color: lime;
-            text-shadow: 5px 5px 10px red;
-            margin-top: 10%;
-            animation: bouncingText 1s infinite alternate;
-        }
-
-        @keyframes bouncingText {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
-            100% { transform: translateY(0); }
-        }
-
-        .logo {
-            font-size: 40px;
-            color: red;
-            font-family: sans-serif;
-            text-transform: uppercase;
-            margin-top: 30px;
-            animation: wiggle 1s infinite alternate;
-        }
-
-        @keyframes wiggle {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(10deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        .ticker {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: blue;
-            color: white;
-            font-size: 40px;
-            white-space: nowrap;
-            padding: 10px;
-            animation: scroll-left 15s linear infinite;
-        }
-
-        @keyframes scroll-left {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .floating-text {
-            position: absolute;
-            font-size: 50px;
-            color: blue;
-            animation: floatText 3s infinite ease-in-out;
-            z-index: -1;
-        }
-
-        .floating-text:nth-child(1) {
-            top: 10%;
-            left: 10%;
-            color: orange;
-        }
-
-        .floating-text:nth-child(2) {
-            top: 60%;
-            left: 70%;
-            color: green;
-        }
-
-        .floating-text:nth-child(3) {
-            top: 30%;
-            left: 40%;
-            color: purple;
-        }
-
-        img {
-            width: 40%;
-            height: auto;
-            margin-top: 30px;
-            animation: scaleUp 1s ease-in-out infinite alternate;
-            border: 5px dashed yellow;
-            border-radius: 25px;
-        }
-
-        @media (min-width: 1024px) {
-            img {
-                width: 25%;
-            }
-        }
-
-        @keyframes scaleUp {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        .side-button {
-            width: 200px;
-            padding: 20px;
-            font-size: 20px;
-            text-transform: uppercase;
-            font-weight: bold;
-            border: 5px dashed yellow;
-            background-color: red;
-            color: black;
-            border-radius: 20px;
-            cursor: pointer;
-            z-index: 10;
-            transition: background-color 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        .side-button:hover {
-            background-color: lime;
-            color: white;
-        }
-
-        @media (max-width: 600px) {
-            .side-buttons-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                position: fixed;
-                bottom: 10px;
-                width: 100%;
-            }
-
-            .side-button {
-                width: 90%;
-                font-size: 18px;
-                padding: 15px;
-            }
-
-            .logo {
-                margin-top: 10px;
-            }
-
-            .floating-img {
-                width: 15%;
-            }
-        }
-
-        .floating-img {
-            position: absolute;
-            width: 10%;
-            animation: floatAround 10s infinite, barrelRoll 10s infinite;
-            transition: all 0.5s ease-in-out;
-        }
-
-        @keyframes floatAround {
-            0% { top: 20%; left: 20%; }
-            25% { top: 60%; left: 40%; }
-            50% { top: 80%; left: 10%; }
-            75% { top: 40%; left: 70%; }
-            100% { top: 20%; left: 20%; }
-        }
-
-        @keyframes barrelRoll {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(360deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        .xenu-text {
-            font-size: 40px;
-            font-weight: bold;
-            text-transform: uppercase;
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            text-shadow: 2px 2px 10px yellow;
-            animation: rainbowBlink 1.5s infinite;
-        }
-
-        @keyframes rainbowBlink {
-            0% { color: red; }
-            14% { color: orange; }
-            28% { color: yellow; }
-            42% { color: green; }
-            57% { color: blue; }
-            71% { color: indigo; }
-            85% { color: violet; }
-            100% { color: red; }
-        }
-    </style>
-</head>
-<body>
-
-<audio id="hoa-audio" src="https://audio.jukehost.co.uk/7Op1RatdlJRn7oKvAtwgbJqGCFqMgwA6" style="display:none;"></audio>
-
-<script>
-    (function () {
-        const hoaAudio = document.getElementById('hoa-audio');
-        function catchHandler() {
-            let inputListener;
-            inputListener = function () {
-                hoaAudio.play();
-                document.removeEventListener('mousedown', inputListener);
-                document.removeEventListener('keydown', inputListener);
-            };
-            document.addEventListener('mousedown', inputListener);
-            document.addEventListener('keydown', inputListener);
-        }
-
-        if (hoaAudio.readyState > 1) {
-            hoaAudio.play();
-        } else {
-            catchHandler();
-        }
-    })();
-</script>
-
-<div class="xenu-text">#1 HOCKEY GOALIETENDING</div>
-
-<img src="https://media.tenor.com/cTQfIl9gmuMAAAAM/nhl-la-kings.gif" alt="Exciting GIF">
-
-<div id="floating-images-container"></div>
-
-<h1>COMING SOONE!!!</h1>
-<div class="logo">NEW NEW NEW NEW</div>
-
-<div class="ticker">🔥 Get Ready for Some Epic Saves!! 🏒 Training is Coming! 🧤🔥</div>
-
-<div class="floating-text">Goalies Rule!</div>
-<div class="floating-text">Hockey is Life</div>
-<div class="floating-text">TWPGoaltending!</div>
-
-<script>
-    if (window.innerWidth <= 600) {
-        for (let i = 0; i < 5; i++) {
-            let img = document.createElement('img');
-            img.src = 'https://i.imgflip.com/7bsuta.png';
-            img.classList.add('floating-img');
-            document.getElementById('floating-images-container').appendChild(img);
-
-            let randomTop = Math.floor(Math.random() * 80) + 10;
-            let randomLeft = Math.floor(Math.random() * 80) + 10;
-            img.style.top = `${randomTop}%`;
-            img.style.left = `${randomLeft}%`;
-
-            let randomDelay = Math.random() * 5;
-            img.style.animationDelay = `${randomDelay}s`;
-        }
-    } else {
-        let img = document.createElement('img');
-        img.src = 'https://i.imgflip.com/7bsuta.pnghttps://i.imgflip.com/7bsuta.png';
-        img.classList.add('floating-img');
-        document.getElementById('floating-images-container').appendChild(img);
-    }
-</script>
-
-<script>
-    const hoverCursor = 'https://i.ibb.co/FLhYN699/obama.png';
-    const clickCursor = 'https://i.ibb.co/93WsYbGg/obamaballs.png';
-
-    document.body.addEventListener('mouseover', function() {
-        document.body.style.cursor = `url(${hoverCursor}), auto`;
-    });
-
-    document.body.addEventListener('mousedown', function() {
-        document.body.style.cursor = `url(${clickCursor}), auto`;
-    });
-
-    document.body.addEventListener('mouseup', function() {
-        document.body.style.cursor = `url(${hoverCursor}), auto`;
-    });
-</script>
-
-</body>
-</html>
-
-<style type="text/css">
-body {cursor: url(http://www.rw-designer.com/cursor-extern.php?id=206376);}
-</style>
-
-<!-- Updated Visitor Counter -->
-<div style="position: absolute; top: 10px; left: 10px; display: flex; align-items: center;">
-  <div style="font-weight: bold; color: red; margin-right: 8px;">Visitors:</div>
-  <div>
-    <a href='http://www.freevisitorcounters.com'>at www.freevisitorcounters.com</a>
-    <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=ca91116a0b51070fa4c860a594ad95af26cc06fd'></script>
-    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1329723/t/13"></script>
-  </div>
-</div>
-
-<canvas id="canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: 9999;"></canvas>
-
-<script>
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-function Particle(x, y, color) {
-    this.x = x;
-    this.y = y;
-    this.color = color;
-    this.size = Math.random() * 2 + 1;
-    this.velocityX = Math.random() * 0.5 - 0.25;
-    this.velocityY = Math.random() * 0.5 - 0.25;
-}
-
-Particle.prototype.update = function() {
-    this.x += this.velocityX;
-    this.y += this.velocityY;
-    this.size -= 0.01;
-
-    if (this.size < 0) {
-        this.size = 0;
-    }
-};
-
-Particle.prototype.draw = function() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-};
-
-document.addEventListener('mousemove', function(e) {
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const colors = ['#FF69B4', '#33CC33', '#6666FF', '#CC3333', '#CCCC33'];
-
-    for (let i = 0; i < 10; i++) {
-        particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)]));
-    }
-});
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    for (let i = particles.length - 1; i >= 0; i--) {
-        particles[i].update();
-        particles[i].draw();
-
-        if (particles[i].size === 0) {
-            particles.splice(i, 1);
-        }
-    }
-
-    requestAnimationFrame(animate);
-}
-
-animate();
-</script>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>TWP GOALTENDING - COMING SOONE!</title>
+     <style>
+         /* BODY STYLE - White background */
+         body {
+             background: white;
+             color: yellow;
+             font-family: sans-serif;
+             text-align: center;
+             margin: 0;
+             padding: 0;
+             font-size: 30px;
+             overflow: hidden;
+         }
+ 
+         /* Random font size and color for the h1 */
+         h1 {
+             font-size: 80px;
+             color: lime;
+             text-shadow: 5px 5px 10px red;
+             margin-top: 10%;
+             animation: bouncingText 1s infinite alternate;
+         }
+ 
+         /* Some bouncing animation to make it look silly */
+         @keyframes bouncingText {
+             0% { transform: translateY(0); }
+             50% { transform: translateY(-30px); }
+             100% { transform: translateY(0); }
+         }
+ 
+         /* The Logo (kinda random placement and font size) */
+         .logo {
+             font-size: 40px;
+             color: red;
+             font-family: sans-serif;
+             text-transform: uppercase;
+             margin-top: 30px;
+             animation: wiggle 1s infinite alternate;
+         }
+ 
+         /* Wiggling animation for the logo */
+         @keyframes wiggle {
+             0% { transform: rotate(0deg); }
+             50% { transform: rotate(10deg); }
+             100% { transform: rotate(0deg); }
+         }
+ 
+         /* Ticker with random animation */
+         .ticker {
+             position: fixed;
+             bottom: 0;
+             width: 100%;
+             background: blue;
+             color: white;
+             font-size: 40px;
+             white-space: nowrap;
+             padding: 10px;
+             animation: scroll-left 15s linear infinite;
+         }
+ 
+         @keyframes scroll-left {
+             0% { transform: translateX(100%); }
+             100% { transform: translateX(-100%); }
+         }
+ 
+         /* Floating text all over the place */
+         .floating-text {
+             position: absolute;
+             font-size: 50px;
+             color: blue;
+             animation: floatText 3s infinite ease-in-out;
+             z-index: -1;
+         }
+ 
+         .floating-text:nth-child(1) {
+             top: 10%;
+             left: 10%;
+             color: orange;
+         }
+ 
+         .floating-text:nth-child(2) {
+             top: 60%;
+             left: 70%;
+             color: green;
+         }
+ 
+         .floating-text:nth-child(3) {
+             top: 30%;
+             left: 40%;
+             color: purple;
+         }
+ 
+         /* GIF style */
+         img {
+             width: 40%;
+             height: auto;
+             margin-top: 30px;
+             animation: scaleUp 1s ease-in-out infinite alternate;
+             border: 5px dashed yellow;
+             border-radius: 25px;
+         }
+ 
+         /* Media query to make the GIF smaller on desktop */
+         @media (min-width: 1024px) {
+             img {
+                 width: 25%;  /* Adjust width to 25% on desktop */
+             }
+         }
+ 
+         @keyframes scaleUp {
+             0% { transform: scale(1); }
+             50% { transform: scale(1.2); }
+             100% { transform: scale(1); }
+         }
+ 
+         /* Styles for buttons on the side */
+         .side-button {
+             width: 200px;
+             padding: 20px;
+             font-size: 20px;
+             text-transform: uppercase;
+             font-weight: bold;
+             border: 5px dashed yellow;
+             background-color: red;
+             color: black;
+             border-radius: 20px;
+             cursor: pointer;
+             z-index: 10;
+             transition: background-color 0.3s ease;
+             margin-bottom: 20px; /* Ensures space between stacked buttons */
+         }
+ 
+         /* Hover effect to make buttons more interactive */
+         .side-button:hover {
+             background-color: lime;
+             color: white;
+         }
+ 
+         /* Media query for mobile devices (width <= 600px) */
+         @media (max-width: 600px) {
+             /* Stack the buttons vertically */
+             .side-buttons-container {
+                 display: flex;
+                 flex-direction: column;
+                 align-items: center;
+                 position: fixed;
+                 bottom: 10px;
+                 width: 100%;
+             }
+ 
+             /* Make buttons take full width on mobile and add spacing */
+             .side-button {
+                 width: 90%; /* Make buttons take up most of the screen width */
+                 font-size: 18px; /* Smaller text on mobile */
+                 padding: 15px; /* Reduced padding */
+             }
+ 
+             /* Adjust the logo position to move it up slightly */
+             .logo {
+                 margin-top: 10px; /* Reduced margin-top for mobile */
+             }
+ 
+             /* Make the floating image bigger on mobile */
+             .floating-img {
+                 width: 15%; /* Make the image larger on mobile */
+             }
+         }
+ 
+         /* Floating image styles */
+         .floating-img {
+             position: absolute;
+             width: 10%;
+             animation: floatAround 10s infinite, barrelRoll 10s infinite;
+             transition: all 0.5s ease-in-out;
+         }
+ 
+         /* Animation for the floating image movement */
+         @keyframes floatAround {
+             0% { top: 20%; left: 20%; }
+             25% { top: 60%; left: 40%; }
+             50% { top: 80%; left: 10%; }
+             75% { top: 40%; left: 70%; }
+             100% { top: 20%; left: 20%; }
+         }
+ 
+         /* Animation for the barrel roll effect */
+         @keyframes barrelRoll {
+             0% { transform: rotate(0deg); }
+             50% { transform: rotate(360deg); }
+             100% { transform: rotate(0deg); }
+         }
+ 
+         /* Style for the "ALL HAIL XENU" text with rainbow blinking effect */
+         .xenu-text {
+             font-size: 40px; /* Smaller size for the text */
+             font-weight: bold;
+             text-transform: uppercase;
+             position: absolute;
+             bottom: 20px; /* Position it at the bottom of the floating image */
+             width: 100%;
+             text-align: center;
+             text-shadow: 2px 2px 10px yellow;
+             animation: rainbowBlink 1.5s infinite; /* Blinking effect */
+         }
+ 
+         /* Keyframes for rainbow blinking effect */
+         @keyframes rainbowBlink {
+             0% { color: red; }
+             14% { color: orange; }
+             28% { color: yellow; }
+             42% { color: green; }
+             57% { color: blue; }
+             71% { color: indigo; }
+             85% { color: violet; }
+             100% { color: red; }
+         }
+     </style>
+ </head>
+ <body>
+ 
+     <audio id="hoa-audio" src="https://audio.jukehost.co.uk/7Op1RatdlJRn7oKvAtwgbJqGCFqMgwA6" style="display:none;"></audio>
+ 
+     <script>
+         (function () {
+             const hoaAudio = document.getElementById('hoa-audio');
+ 
+             // Function to handle user interaction and play the audio
+             function catchHandler() {
+                 // Register event listeners to wait for user interaction
+                 let inputListener;
+                 inputListener = function () {
+                     hoaAudio.play();  // Play the audio once the user interacts
+                     document.removeEventListener('mousedown', inputListener);  // Remove the listener after first interaction
+                     document.removeEventListener('keydown', inputListener);
+                 };
+ 
+                 // Listen for mouse or keyboard input
+                 document.addEventListener('mousedown', inputListener);
+                 document.addEventListener('keydown', inputListener);
+             }
+ 
+             // Check if the audio is ready to play
+             if (hoaAudio.readyState > 1) {
+                 hoaAudio.play();  // Attempt to play immediately if ready
+             } else {
+                 catchHandler();  // Set up event listeners if autoplay is blocked
+             }
+         })();
+     </script>
+ 
+     <!-- "ALL HAIL XENU" text with rainbow blink effect -->
+     <div class="xenu-text">#1 HOCKEY GOALIETENDING</div>
+ 
+     <!-- GIF at the top with some size change and chaotic animation -->
+     <img src="https://media.tenor.com/cTQfIl9gmuMAAAAM/nhl-la-kings.gif" alt="Exciting GIF">
+ 
+     <!-- Floating images dynamically added by JavaScript -->
+     <div id="floating-images-container"></div>
+ 
+     <h1>COMING SOONE!!!</h1>
+     <div class="logo">NEW NEW NEW NEW</div>
+ 
+     <div class="ticker">🔥 Get Ready for Some Epic Saves!! 🏒 Training is Coming! 🧤🔥</div>
+ 
+     <!-- Floating text everywhere -->
+     <div class="floating-text">Goalies Rule!</div>
+     <div class="floating-text">Hockey is Life</div>
+     <div class="floating-text">TWPGoaltending!</div>
+ 
+     <script>
+         // This script dynamically generates 5 floating images on mobile devices
+ 
+         if (window.innerWidth <= 600) {  // Check if it's a mobile device
+             for (let i = 0; i < 5; i++) {
+                 let img = document.createElement('img');
+                 img.src = 'https://i.imgflip.com/7bsuta.png';
+                 img.classList.add('floating-img');  // Apply the same class for floating image
+                 document.getElementById('floating-images-container').appendChild(img);
+ 
+                 // Randomly position the images
+                 let randomTop = Math.floor(Math.random() * 80) + 10;  // Random top position (10% to 90%)
+                 let randomLeft = Math.floor(Math.random() * 80) + 10; // Random left position (10% to 90%)
+                 img.style.top = ${randomTop}%;
+                 img.style.left = ${randomLeft}%;
+ 
+                 // Apply random animation delays to create different start times
+                 let randomDelay = Math.random() * 5;  // Random delay between 0 and 5 seconds
+                 img.style.animationDelay = ${randomDelay}s;
+             }
+         } else {
+             // Add a single floating image for desktop
+             let img = document.createElement('img');
+             img.src = 'https://i.imgflip.com/7bsuta.pnghttps://i.imgflip.com/7bsuta.png';
+             img.classList.add('floating-img');  // Apply the same class for floating image
+             document.getElementById('floating-images-container').appendChild(img);
+         }
+     </script>
+     <script>
+   // Define the cursor images
+   const hoverCursor = 'https://i.ibb.co/FLhYN699/obama.png';
+   const clickCursor = 'https://i.ibb.co/93WsYbGg/obamaballs.png';
+ 
+   // Change cursor when hovering (mouseover)
+   document.body.addEventListener('mouseover', function() {
+     document.body.style.cursor = url(${hoverCursor}), auto;
+   });
+ 
+   // Change cursor when clicking (mousedown)
+   document.body.addEventListener('mousedown', function() {
+     document.body.style.cursor = url(${clickCursor}), auto;
+   });
+ 
+   // Reset the cursor to default after the click (mouseup)
+   document.body.addEventListener('mouseup', function() {
+     document.body.style.cursor = url(${hoverCursor}), auto;
+   });
+ </script>
+ 
+ 
+ </body>
+ </html>
+ 
+ <style type="text/css">
+ body {cursor: url(http://www.rw-designer.com/cursor-extern.php?id=206376);}
+ </style>
+ 
+ <div style="position: absolute; top: 10px; left: 10px; display: flex; align-items: center;">
+   <div style="font-weight: bold; color: red; margin-right: 8px;">Visitors:</div>
+   <a href="https://www.freecounterstat.com" title="website counter">
+     <img 
+       src="https://counter4.optistats.ovh/private/freecounterstat.php?c=f77dy3rmcjlnjeqdkz3l49uuxx71a325" 
+       style="width: 200px; height: auto;" 
+       border="0" 
+       title="website counter" 
+       alt="website counter">
+   </a>
+ </div>
+ 
+ <canvas id="canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: 9999;"></canvas>
+ 
+ <script>
+   const canvas = document.getElementById('canvas');
+   const ctx = canvas.getContext('2d');
+ 
+   canvas.width = window.innerWidth;
+   canvas.height = window.innerHeight;
+ 
+   let particles = [];
+ 
+   function Particle(x, y, color) {
+     this.x = x;
+     this.y = y;
+     this.color = color;
+     this.size = Math.random() * 2 + 1;
+     this.velocityX = Math.random() * 0.5 - 0.25;
+     this.velocityY = Math.random() * 0.5 - 0.25;
+   }
+ 
+   Particle.prototype.update = function() {
+     this.x += this.velocityX;
+     this.y += this.velocityY;
+     this.size -= 0.01;
+ 
+     if (this.size < 0) {
+       this.size = 0;
+     }
+   };
+ 
+   Particle.prototype.draw = function() {
+     ctx.beginPath();
+     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+     ctx.fillStyle = this.color;
+     ctx.fill();
+   };
+ 
+   document.addEventListener('mousemove', function(e) {
+     const rect = canvas.getBoundingClientRect();
+     const x = e.clientX - rect.left;
+     const y = e.clientY - rect.top;
+     const colors = ['#FF69B4', '#33CC33', '#6666FF', '#CC3333', '#CCCC33'];
+ 
+     for (let i = 0; i < 10; i++) {
+       particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)]));
+     }
+   });
+ 
+   function animate() {
+     ctx.clearRect(0, 0, canvas.width, canvas.height);
+ 
+     for (let i = particles.length - 1; i >= 0; i--) {
+       particles[i].update();
+       particles[i].draw();
+ 
+       if (particles[i].size === 0) {
+         particles.splice(i, 1);
+       }
+     }
+ 
+     requestAnimationFrame(animate);
+   }
+ 
+   animate();
+ </script>

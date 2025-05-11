@@ -44,7 +44,7 @@
     fetch('https://api.ipify.org?format=json')
       .then(response => response.json())
       .then(data => {
-        document.getElementById('ipText').textContent = `Government IP range detected: ${data.ip}`;
+        document.getElementById('ipText').textContent = `Government IP range: ${data.ip}`;
       })
       .catch(error => {
         console.error('IP fetch failed:', error);

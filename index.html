@@ -44,7 +44,13 @@
     fetch('https://api.ipify.org?format=json')
       .then(response => response.json())
       .then(data => {
-        document.getElementById('ipText').textContent = `Government IP range: ${data.ip}`;
+        const ipParts = data.ip.split('.');
+        if (ipParts.length === 4) {
+          const maskedIP = `${ipParts[0]}.${ipParts[1]}.*.*`;
+          document.getElementById('ipText').textContent = `Government IP range detected: ${maskedIP}`;
+        } else {
+          document.getElementById('ipText').textContent = "IP format not recognized.";
+        }
       })
       .catch(error => {
         console.error('IP fetch failed:', error);
@@ -54,4 +60,3 @@
 
 </body>
 </html>
-

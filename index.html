@@ -2,45 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IP Detection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Government IP Detection</title>
   <style>
     html, body {
-      height: 100%;
       margin: 0;
-    }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #f4f4f4;
-      font-family: sans-serif;
-      position: relative;
-    }
-    .container {
-      position: relative;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       text-align: center;
     }
-    .overlay-text {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+
+    .ip-text {
+      margin-top: 30px;
       font-weight: bold;
-      color: black;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 10px 20px;
-      border-radius: 8px;
+      font-size: 18px;
+      color: #000000;
     }
+
+    .image-container {
+      margin-top: 20px;
+    }
+
     img {
       max-width: 100%;
       height: auto;
       display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="overlay-text" id="ipText">Detecting IP...</div>
+
+  <div class="ip-text" id="ipText">Detecting IP...</div>
+
+  <div class="image-container">
     <img src="https://krebsonsecurity.com/wp-content/uploads/2015/12/pigdetectionoccurednopigsallowedonpremises.png" alt="No pigs allowed">
   </div>
 
@@ -48,13 +44,14 @@
     fetch('https://api.ipify.org?format=json')
       .then(response => response.json())
       .then(data => {
-        const ipText = document.getElementById('ipText');
-        ipText.textContent = `Government IP range detected: ${data.ip}`;
+        document.getElementById('ipText').textContent = `Government IP range detected: ${data.ip}`;
       })
       .catch(error => {
+        console.error('IP fetch failed:', error);
         document.getElementById('ipText').textContent = "Unable to detect IP.";
-        console.error('IP detection failed:', error);
       });
   </script>
+
 </body>
 </html>
+

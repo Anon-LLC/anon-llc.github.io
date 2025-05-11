@@ -3,60 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Government IP Detection</title>
+  <title>No Pigs Allowed</title>
   <style>
     html, body {
+      height: 100%;
       margin: 0;
-      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      text-align: center;
-    }
-
-    .ip-text {
-      margin-top: 30px;
-      font-weight: bold;
-      font-size: 18px;
-      color: #000000;
-    }
-
-    .image-container {
-      margin-top: 20px;
     }
 
     img {
       max-width: 100%;
       height: auto;
-      display: block;
-      margin: 0 auto;
     }
   </style>
 </head>
 <body>
-
-  <div class="ip-text" id="ipText">Detecting IP...</div>
-
-  <div class="image-container">
-    <img src="https://krebsonsecurity.com/wp-content/uploads/2015/12/pigdetectionoccurednopigsallowedonpremises.png" alt="No pigs allowed">
-  </div>
-
-  <script>
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        const ipParts = data.ip.split('.');
-        if (ipParts.length === 4) {
-          const maskedIP = `${ipParts[0]}.${ipParts[1]}.*.*`;
-          document.getElementById('ipText').textContent = `Government IP range detected: ${maskedIP}`;
-        } else {
-          document.getElementById('ipText').textContent = "IP format not recognized.";
-        }
-      })
-      .catch(error => {
-        console.error('IP fetch failed:', error);
-        document.getElementById('ipText').textContent = "Unable to detect IP.";
-      });
-  </script>
-
+  <img src="https://krebsonsecurity.com/wp-content/uploads/2015/12/pigdetectionoccurednopigsallowedonpremises.png" alt="No pigs allowed">
 </body>
 </html>
+

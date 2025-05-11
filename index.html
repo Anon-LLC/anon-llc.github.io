@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Centered Image</title>
+  <title>IP Detection</title>
   <style>
     html, body {
       height: 100%;
@@ -12,15 +12,49 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #f4f4f4; /* Optional: background color */
+      background-color: #f4f4f4;
+      font-family: sans-serif;
+      position: relative;
+    }
+    .container {
+      position: relative;
+      text-align: center;
+    }
+    .overlay-text {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+      color: black;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px 20px;
+      border-radius: 8px;
     }
     img {
       max-width: 100%;
       height: auto;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <img src="https://krebsonsecurity.com/wp-content/uploads/2015/12/pigdetectionoccurednopigsallowedonpremises.png" alt="No pigs allowed">
+  <div class="container">
+    <div class="overlay-text" id="ipText">Detecting IP...</div>
+    <img src="https://krebsonsecurity.com/wp-content/uploads/2015/12/pigdetectionoccurednopigsallowedonpremises.png" alt="No pigs allowed">
+  </div>
+
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        const ipText = document.getElementById('ipText');
+        ipText.textContent = `Government IP range detected: ${data.ip}`;
+      })
+      .catch(error => {
+        document.getElementById('ipText').textContent = "Unable to detect IP.";
+        console.error('IP detection failed:', error);
+      });
+  </script>
 </body>
 </html>
